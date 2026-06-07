@@ -1,6 +1,7 @@
 import datetime
 import os
 import requests
+import time
 
 DAYS_OF_WEEK = [
     "понедельник",
@@ -29,9 +30,13 @@ post_text_vk = f"""Есть места 📞8(927)08-80-720
 📌Заберём со всех попутных городов и деревень 
 📌В любое удобное для Вас время 
 📌Курьерские услуги 
-📌Онлайн оплата"""
+📌Онлайн оплата
 
-post_text_tg = f"```\n{post_text_vk}\n```"
+🔥Сообщество VK:
+https://vk.com/uldashsoo"""
+
+post_text_tg = f"```\n{post_text_vk}\n
+```"
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
@@ -63,6 +68,22 @@ if VK_TOKEN and VK_GROUP_ID:
         post_id = res_vk["response"]["post_id"]
         print(f"Пост успешно опубликован в ВК! ID: {post_id}")
         
+        time.sleep(3)
+        
+        url_vk_pin = "https://api.vk.com/method/wall.pin"
+        params_vk_pin = {
+            "owner_id": VK_GROUP_ID,
+            "post_id": post_id,
+            "access_token": VK_TOKEN,
+            "v": "5.131",
+        }
+        res_pin = requests.post(url_vk_pin, data=params_vk_pin).json()
+        if "response" in res_pin:
+            print("Пост успешно закреплен на стене ВК!")
+        else:
+            print("Не удалось закрепить пост в ВК. Ответ сервера:", res_pin)
+    else:
+        print("Ошибка публикации в ВК:", res_vk)        
         url_vk_pin = "https://api.vk.com/method/wall.pin"
         params_vk_pin = {
             "owner_id": VK_GROUP_ID,
