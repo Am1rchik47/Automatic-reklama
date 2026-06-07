@@ -1,7 +1,6 @@
 import datetime
 import os
 import requests
-import time
 
 DAYS_OF_WEEK = [
     "понедельник",
@@ -64,22 +63,6 @@ if VK_TOKEN and VK_GROUP_ID:
     res_vk = requests.post(url_vk_post, data=params_vk_post).json()
     
     if "response" in res_vk:
-        post_id = res_vk["response"]["post_id"]
-        print(f"Пост успешно опубликован в ВК! ID: {post_id}")
-        
-        time.sleep(3)
-        
-        url_vk_pin = "https://api.vk.com/method/wall.pin"
-        params_vk_pin = {
-            "owner_id": VK_GROUP_ID,
-            "post_id": post_id,
-            "access_token": VK_TOKEN,
-            "v": "5.131",
-        }
-        res_pin = requests.post(url_vk_pin, data=params_vk_pin).json()
-        if "response" in res_pin:
-            print("Пост успешно закреплен на стене ВК!")
-        else:
-            print("Не удалось закрепить пост в ВК. Ответ сервера:", res_pin)
+        print("Ура! Пост успешно опубликован в группе ВК! ID поста:", res_vk["response"]["post_id"])
     else:
         print("Ошибка публикации в ВК:", res_vk)
