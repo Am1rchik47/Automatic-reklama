@@ -29,9 +29,7 @@ post_text_vk = f"""Есть места 📞8(927)08-80-720
 📌Заберём со всех попутных городов и деревень 
 📌В любое удобное для Вас время 
 📌Курьерские услуги 
-📌Онлайн оплата
-🔥Сообщество в VK:
-https://vk.com/uldashsoo"""
+📌Онлайн оплата"""
 
 post_text_tg = f"```\n{post_text_vk}\n```"
 
@@ -51,16 +49,31 @@ VK_TOKEN = os.environ.get("VK_TOKEN")
 VK_GROUP_ID = os.environ.get("VK_GROUP_ID")
 
 if VK_TOKEN and VK_GROUP_ID:
-    url_vk = "https://api.vk.com/method/wall.post"
-    params_vk = {
+    url_vk_post = "https://api.vk.com/method/wall.post"
+    params_vk_post = {
         "owner_id": VK_GROUP_ID,
         "from_group": 1,
         "message": post_text_vk,
         "access_token": VK_TOKEN,
         "v": "5.131",
     }
-    res_vk = requests.post(url_vk, data=params_vk).json()
+    res_vk = requests.post(url_vk_post, data=params_vk_post).json()
+    
     if "response" in res_vk:
-        print("Ура! Пост успешно опубликован в группе ВК! ID поста:", res_vk["response"]["post_id"])
+        post_id = res_vk["response"]["post_id"]
+        print(f"Пост успешно опубликован в ВК! ID: {post_id}")
+        
+        url_vk_pin = "https://api.vk.com/method/wall.pin"
+        params_vk_pin = {
+            "owner_id": VK_GROUP_ID,
+            "post_id": post_id,
+            "access_token": VK_TOKEN,
+            "v": "5.131",
+        }
+        res_pin = requests.post(url_vk_pin, data=params_vk_pin).json()
+        if "response" in res_pin:
+            print("Пост успешно закреплен на стене ВК!")
+        else:
+            print("Не удалось закрепить пост в ВК:", res_pin)
     else:
-        print("Ошибка ВК:", res_vk)
+        print("Ошибка публикации в ВК:", res_vk)
