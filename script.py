@@ -24,15 +24,13 @@ day_tomorrow_name = DAYS_OF_WEEK[tomorrow.weekday()]
 post_text_vk = f"""Есть места 📞8(927)08-80-720 
 🌞{date_today_str} {day_today_name}
 🌞{date_tomorrow_str} {day_tomorrow_name}
-🚕Исянгулово-Мраково-Уфа-Мраково-Исянгулово 
+Исянгулово-Мраково-Уфа-Мраково-Исянгулово 
 ✅Выдаём билеты с QR-кодом 
 📌Заберём со всех попутных городов и деревень 
 📌В любое удобное для Вас время 
 📌Курьерские услуги 
 📌Онлайн оплата
-
-🔥Сообщество VK:
-https://vk.com/uldashsoo"""
+🔥Сообщество VK: https://vk.com/uldashsoo"""
 
 post_text_tg = f"```\n{post_text_vk}\n```"
 
