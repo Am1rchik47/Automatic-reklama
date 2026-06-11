@@ -2,7 +2,7 @@ name: Send Daily Post to Telegram and VK
 
 on:
   schedule:
-    - cron: '0 13 * * *'
+    - cron: '24 3,6,9,12,15,18 * * *'
   workflow_dispatch:
 
 jobs:
