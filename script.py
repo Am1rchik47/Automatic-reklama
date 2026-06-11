@@ -37,10 +37,7 @@ post_text_vk = f"""Есть места 📞8(927)08-80-720
 📌Онлайн оплата
 
 🔥Сообщество VK:
-https://vk.com/uldashsoo"""
-
-post_text_tg = f"```\n{post_text_vk}\n
-```"
+[https://vk.com/uldashsoo](https://vk.com/uldashsoo)"""
 
 VK_TOKEN = os.environ.get("VK_TOKEN")
 VK_GROUP_ID = os.environ.get("VK_GROUP_ID")
@@ -50,10 +47,10 @@ need_to_post = True
 
 if VK_TOKEN and VK_GROUP_ID:
     # --- ПРОВЕРКА: ЧТО СЕЙЧАС НАВЕРХУ СТЕНЫ ---
-    url_get = "https://api.vk.com/method/wall.get"
+    url_get = "[https://api.vk.com/method/wall.get](https://api.vk.com/method/wall.get)"
     params_get = {
         "owner_id": VK_GROUP_ID,
-        "count": 2, # Берём парочку на всякий случай
+        "count": 2,
         "access_token": VK_TOKEN,
         "v": "5.131"
     }
@@ -73,13 +70,13 @@ if VK_TOKEN and VK_GROUP_ID:
 
 # --- ЕСЛИ НАВЕРХУ НЕТ НАШЕГО ПОСТА, ТО ЗАПУСКАЕМ РЕКЛАМУ ---
 if need_to_post:
-    # 1. ОТПРАВКА В TELEGRAM
+    # 1. ОТПРАВКА В TELEGRAM (убрали сложные кавычки, теперь обычный текст)
     TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
     TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
     if TELEGRAM_TOKEN and TELEGRAM_CHAT_ID:
-        url_tg = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-        params_tg = {"chat_id": TELEGRAM_CHAT_ID, "text": post_text_tg, "parse_mode": "MarkdownV2"}
+        url_tg = f"[https://api.telegram.org/bot](https://api.telegram.org/bot){TELEGRAM_TOKEN}/sendMessage"
+        params_tg = {"chat_id": TELEGRAM_CHAT_ID, "text": post_text_vk}
         res_tg = requests.post(url_tg, json=params_tg).json()
         if res_tg.get("ok"):
             print("Успешно отправлено в Telegram!")
@@ -88,7 +85,7 @@ if need_to_post:
 
     # 2. ОТПРАВКА В ВКОНТАКТЕ
     if VK_TOKEN and VK_GROUP_ID:
-        url_vk_post = "https://api.vk.com/method/wall.post"
+        url_vk_post = "[https://api.vk.com/method/wall.post](https://api.vk.com/method/wall.post)"
         params_vk_post = {
             "owner_id": VK_GROUP_ID,
             "from_group": 1,
