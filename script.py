@@ -53,7 +53,7 @@ if VK_TOKEN and VK_GROUP_ID:
     url_get = "https://api.vk.com/method/wall.get"
     params_get = {
         "owner_id": VK_GROUP_ID,
-        "count": 2, # Берём парочку, на случай если первый пост закреплен
+        "count": 2, # Берём парочку на всякий случай
         "access_token": VK_TOKEN,
         "v": "5.131"
     }
