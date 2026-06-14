@@ -81,3 +81,5 @@ if VK_TOKEN_2 and VK_GROUP_ID_2:
         "from_group": 1,
         "message": post_text_vk,
         "access_token": VK
+        "v": "5.131",
+    }
