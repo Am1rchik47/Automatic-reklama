@@ -80,5 +80,5 @@ if VK_TOKEN_2 and VK_GROUP_ID_2:
         "owner_id": VK_GROUP_ID_2.strip(),
         "from_group": 1,
         "message": post_text_vk,
-        "access_token": VK
+        "access_token": VK_TOKEN_2.strip(),
     }
