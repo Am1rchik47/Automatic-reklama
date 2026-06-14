@@ -34,8 +34,9 @@ post_text_vk = f"""Есть места 📞8(927)08-80-720
 📌Курьерские услуги 
 📌Онлайн оплата
 
-🔥Сообщество VK:
-https://vk.com/uldashsoo"""
+🔥Сообщества VK:
+https://vk.com/uldashsoo
+https://vk.com/taxi_mrk_ufa"""
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
