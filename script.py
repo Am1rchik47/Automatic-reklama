@@ -27,13 +27,13 @@ day_tomorrow_name = DAYS_OF_WEEK[tomorrow.weekday()]
 post_text_vk = f"""Есть места 📞8(927)08-80-720 
 🌞{date_today_str} {day_today_name}
 🌞{date_tomorrow_str} {day_tomorrow_name}
+🚕Набираем водителей!!!
 🚕Исянгулово-Мраково-Уфа-Мраково-Исянгулово 
 ✅Выдаём билеты с QR-кодом 
 📌Заберём со всех попутных городов и деревень 
 📌В любое удобное для Вас время 
 📌Курьерские услуги 
 📌Онлайн оплата
-
 🔥Сообщества VK:
 https://vk.com/uldashsoo
 https://vk.com/taxi_mrk_ufa"""
@@ -82,3 +82,11 @@ if VK_TOKEN_2 and VK_GROUP_ID_2:
         "message": post_text_vk,
         "access_token": VK_TOKEN_2.strip(),
     }
+    try:
+        res_vk = requests.post(url_vk_post, data=params_vk_post).json()
+        if "response" in res_vk:
+            print("Успешно опубликовано в ВТОРОЙ группе ВК!")
+        else:
+            print("Ошибка во второй группе ВК:", res_vk)
+    except Exception as e:
+        print("Ошибка сети (Вторая группа):", e)
