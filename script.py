@@ -28,7 +28,7 @@ post_text_vk = f"""Есть места 📞8(927)08-80-720
 🌞{date_today_str} {day_today_name}
 🌞{date_tomorrow_str} {day_tomorrow_name}
 🚕Набираем водителей!!!
-🚕Исянгулово-Мраково-Уфа-Мраково-Исянгулово 
+Исянгулово-Мраково-Уфа-Мраково-Исянгулово 
 ✅Выдаём билеты с QR-кодом 
 📌Заберём со всех попутных городов и деревень 
 📌В любое удобное для Вас время 
@@ -85,7 +85,7 @@ if VK_TOKEN_2 and VK_GROUP_ID_2:
     try:
         res_vk = requests.post(url_vk_post, data=params_vk_post).json()
         if "response" in res_vk:
-            print("Успешно опубликовано в ВТОРОЙ группе ВК!")
+            print("Успешно опубликовано во ВТОРОЙ группе ВК!")
         else:
             print("Ошибка во второй группе ВК:", res_vk)
     except Exception as e:
