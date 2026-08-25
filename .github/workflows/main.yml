@@ -2,7 +2,7 @@ name: Automatic Reklama
 
 on:
   schedule:
-    - cron: '24 3,6,9,12,15,18 * * *'
+    - cron: '24 3,6,9,12,15,18,21 * * *'
   workflow_dispatch:
 
 jobs:
