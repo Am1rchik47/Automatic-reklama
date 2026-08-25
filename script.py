@@ -48,6 +48,7 @@ else:
 # --- VK GROUP 1 ---
 VK_TOKEN = os.environ.get("VK_TOKEN")
 VK_GROUP_ID = os.environ.get("VK_GROUP_ID")
+# Добавил это ради прикола
 
 if VK_TOKEN and VK_GROUP_ID:
     owner_id = VK_GROUP_ID.strip()
