@@ -66,7 +66,7 @@ if VK_TOKEN and VK_GROUP_ID:
         "v": "5.131",
     }
     try:
-        res_vk = requests.post("https://api.vk.com/method/wall.post",data=params_vk_post, header=HEADERS, timeout=10).json()
+        res_vk = requests.post("https://api.vk.com/method/wall.post",data=params_vk_post, headers=HEADERS, timeout=10).json()
         if "response" in res_vk:
             print("Успешно опубликовано в ПЕРВОЙ группе ВК!")
         else:
@@ -93,7 +93,7 @@ if VK_TOKEN_2 and VK_GROUP_ID_2:
         "v": "5.131",
     }
     try:
-        res_vk_2 = requests.post("https://api.vk.com/method/wall.post", data=params_vk_post_2, header=HEADERS, timeout=10).json()
+        res_vk_2 = requests.post("https://api.vk.com/method/wall.post", data=params_vk_post_2, headers=HEADERS, timeout=10).json()
         if "response" in res_vk_2:
             print("Успешно опубликовано во ВТОРОЙ группе ВК!")
         else:
