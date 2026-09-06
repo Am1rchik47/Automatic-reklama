@@ -4,7 +4,11 @@ import requests
 
 DAYS_OF_WEEK = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
 
-utc_now = datetime.datetime.utcnow()
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+}
+
+utc_now = datetime.now(datetime.timezone.utc)
 ufa_now = utc_now + datetime.timedelta(hours=5)
 
 today = ufa_now.date()
@@ -48,7 +52,6 @@ else:
 # --- VK GROUP 1 ---
 VK_TOKEN = os.environ.get("VK_TOKEN")
 VK_GROUP_ID = os.environ.get("VK_GROUP_ID")
-# Добавил это ради прикола
 
 if VK_TOKEN and VK_GROUP_ID:
     owner_id = VK_GROUP_ID.strip()
@@ -63,7 +66,7 @@ if VK_TOKEN and VK_GROUP_ID:
         "v": "5.131",
     }
     try:
-        res_vk = requests.post("https://api.vk.com/method/wall.post", data=params_vk_post).json()
+        res_vk = requests.post("https://api.vk.com/method/wall.post",data=params_vk_post, header=HEADERS, timeout=10).json()
         if "response" in res_vk:
             print("Успешно опубликовано в ПЕРВОЙ группе ВК!")
         else:
@@ -90,7 +93,7 @@ if VK_TOKEN_2 and VK_GROUP_ID_2:
         "v": "5.131",
     }
     try:
-        res_vk_2 = requests.post("https://api.vk.com/method/wall.post", data=params_vk_post_2).json()
+        res_vk_2 = requests.post("https://api.vk.com/method/wall.post", data=params_vk_post_2, header=HEADERS, timeout=10).json()
         if "response" in res_vk_2:
             print("Успешно опубликовано во ВТОРОЙ группе ВК!")
         else:
