@@ -8,7 +8,7 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 }
 
-utc_now = datetime.now(datetime.timezone.utc)
+utc_now = datetime.datetime.now(datetime.timezone.utc)
 ufa_now = utc_now + datetime.timedelta(hours=5)
 
 today = ufa_now.date()
